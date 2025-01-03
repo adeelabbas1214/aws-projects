@@ -19,7 +19,7 @@ def lambda_handler(event, context):
         report_path = "/tmp/daily_report.pdf"
         pdf.output(report_path)
 
-        # Upload to S3 (Optional)
+        # Upload to S3  (Optional)
         s3 = boto3.client('s3')
         bucket_name = "daily-reports-s3-bucket"
         s3.upload_file(report_path, bucket_name, "daily_report.pdf")
