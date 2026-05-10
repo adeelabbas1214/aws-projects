@@ -1,2 +1,1 @@
-# aws-projects
-blogs and projects
+Hands-on Projects
