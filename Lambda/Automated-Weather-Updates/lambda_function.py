@@ -4,14 +4,14 @@ import boto3
 import urllib3
 
 def lambda_handler(event, context):
-    # 1. Configuration from Environment Variables
+   
     api_key = os.environ['OPENWEATHER_API_KEY']
     city = os.environ['CITY']
     sender_email = os.environ['SENDER_EMAIL']
     receiver_email = os.environ['RECEIVER_EMAIL']
     region = os.environ['AWS_REGION']
 
-    # 2. Fetch Weather Data
+    
     http = urllib3.PoolManager()
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
     
@@ -32,7 +32,7 @@ def lambda_handler(event, context):
             f"Have a great day!"
         )
 
-        # 3. Send Email via SES
+        
         ses = boto3.client('ses', region_name=region)
         ses.send_email(
             Source=sender_email,
